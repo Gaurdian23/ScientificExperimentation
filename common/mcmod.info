@@ -1,0 +1,20 @@
+[
+{
+  "modid": "scienceExp",
+  "name": "Scientific Experimentation",
+  "description": "",
+  "version": "0.0.1",
+  "url": "",
+  "updateUrl": "",
+  "authorList": [
+    "jack9515"
+  ],
+  "credits": "Invented and organized by Gaurdian23\nVisit http://phoenixmoddingteam.weebly.com/credits.html for full credits.",
+  "logoFile": "",
+  "screenshots": [
+  ],
+  "parent":"",
+  "dependencies": [
+  ]
+}
+]
