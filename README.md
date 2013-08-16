@@ -1,6 +1,6 @@
-Scientific-Experimentation
+Scientific Experimentation
 ==========================
-Copyright � 2013-2014 by The Phoenix modding team
+Copyright © 2013-2014 by The Phoenix modding team
 See LICENSE for details
 
 Have you ever wanted to transform a creeper into a teleporting ticking time bomb? Have you ever wanted a suit that 
