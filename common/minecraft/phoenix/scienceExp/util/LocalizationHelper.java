@@ -1,4 +1,4 @@
-package minecraft.phoenix.scienceExp.helper;
+package minecraft.phoenix.scienceExp.util;
 
 import cpw.mods.fml.common.registry.LanguageRegistry;
 

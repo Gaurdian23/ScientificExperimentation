@@ -1,7 +1,7 @@
 package minecraft.phoenix.scienceExp.handler;
 
-import minecraft.phoenix.scienceExp.helper.LocalizationHelper;
 import minecraft.phoenix.scienceExp.lib.Localizations;
+import minecraft.phoenix.scienceExp.util.LocalizationHelper;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
 /**
