@@ -7,13 +7,14 @@ import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenMinable;
 import cpw.mods.fml.common.IWorldGenerator;
 
-public class OreGenerator implements IWorldGenerator
+public class WorldGenerator implements IWorldGenerator
 {
 	/**
 	 * blockID, chancesToSpawn, minY, maxY
 	 */
 	public static ArrayList<int[]> ores = new ArrayList<int[]>(5);
 	
+	@Override
     public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider)
     {
     	if(world.provider.dimensionId == 0)

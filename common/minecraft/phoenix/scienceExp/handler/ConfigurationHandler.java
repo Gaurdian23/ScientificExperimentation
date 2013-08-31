@@ -2,7 +2,9 @@ package minecraft.phoenix.scienceExp.handler;
 
 import java.io.File;
 import java.util.logging.Level;
+import minecraft.phoenix.scienceExp.lib.BlockIds;
 import minecraft.phoenix.scienceExp.lib.Reference;
+import minecraft.phoenix.scienceExp.lib.Strings;
 import net.minecraftforge.common.Configuration;
 import cpw.mods.fml.common.FMLLog;
 
@@ -26,7 +28,7 @@ public class ConfigurationHandler
 		{
 			config.load();
 			
-			// Example - BlockIds.BlockID_Asphalt = config.getBlock(Strings.BLOCK_ASPHALT, BlockIds.BlockID_Asphalt_Default).getInt(BlockIds.BlockID_Asphalt_Default);
+			BlockIds.BlockID_CopperOre = config.getBlock(Strings.COPPER_ORE, BlockIds.BlockID_CopperOre_Default).getInt(BlockIds.BlockID_CopperOre_Default);
 		}
 		catch (Exception e)
 		{

@@ -1,13 +1,9 @@
 package minecraft.phoenix.scienceExp.proxy;
 
+
 /**
- * 21 Century Mod
+ * Scientific Experimentation Mod
  * 
- * CommonProxyCivilization
- * 
- * @licence Lesser GNU Public License v3 (http://www.gnu.org/licenses/lgpl.html)
- * @author nightwolf98
- * @author Martijn
  * @author jack9515
  *
  */
@@ -20,6 +16,6 @@ public class CommonProxy
 	
 	public void registerThings()
 	{
-       
+		
 	}
 }
