@@ -37,6 +37,7 @@ public class Blocks
 	public static void init()
 	{
 		//Registering Ores
+		//TODO Tweak ore spawning
 		registerOre(copperOre, Strings.COPPER_ORE, 10, 20 + rand.nextInt(2), 1, 64);
 		registerOre(leadOre, Strings.LEAD_ORE, 10, 20 + rand.nextInt(2), 1, 64);
 		registerOre(tungstenOre, Strings.TUNGSTEN_ORE, 10, 20 + rand.nextInt(2), 1, 64);
