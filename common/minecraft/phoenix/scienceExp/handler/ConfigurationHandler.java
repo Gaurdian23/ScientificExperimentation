@@ -29,6 +29,14 @@ public class ConfigurationHandler
 			config.load();
 			
 			BlockIds.BlockID_CopperOre = config.getBlock(Strings.COPPER_ORE, BlockIds.BlockID_CopperOre_Default).getInt(BlockIds.BlockID_CopperOre_Default);
+			BlockIds.BlockID_LeadOre = config.getBlock(Strings.LEAD_ORE, BlockIds.BlockID_LeadOre_Default).getInt(BlockIds.BlockID_LeadOre_Default);
+			BlockIds.BlockID_TungstenOre = config.getBlock(Strings.TUNGSTEN_ORE, BlockIds.BlockID_TungstenOre_Default).getInt(BlockIds.BlockID_TungstenOre_Default);
+			BlockIds.BlockID_SiliconOre = config.getBlock(Strings.SILICON_ORE, BlockIds.BlockID_SiliconOre_Default).getInt(BlockIds.BlockID_SiliconOre_Default);
+			BlockIds.BlockID_IridiumOre = config.getBlock(Strings.IRIDIUM_ORE, BlockIds.BlockID_IridiumOre_Default).getInt(BlockIds.BlockID_IridiumOre_Default);
+			BlockIds.BlockID_MagnetiteOre = config.getBlock(Strings.MAGNETITE_ORE, BlockIds.BlockID_MagnetiteOre_Default).getInt(BlockIds.BlockID_MagnetiteOre_Default);
+			BlockIds.BlockID_AluminiumOre = config.getBlock(Strings.ALUMINIUM_ORE, BlockIds.BlockID_AluminiumOre_Default).getInt(BlockIds.BlockID_AluminiumOre_Default);
+			BlockIds.BlockID_TinOre = config.getBlock(Strings.TIN_ORE, BlockIds.BlockID_TinOre_Default).getInt(BlockIds.BlockID_TinOre_Default);
+			BlockIds.BlockID_TitaniumOre = config.getBlock(Strings.TITANIUM_ORE, BlockIds.BlockID_TitaniumOre_Default).getInt(BlockIds.BlockID_TitaniumOre_Default);
 		}
 		catch (Exception e)
 		{

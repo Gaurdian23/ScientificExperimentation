@@ -10,7 +10,7 @@ import cpw.mods.fml.common.IWorldGenerator;
 public class WorldGenerator implements IWorldGenerator
 {
 	/**
-	 * blockID, chancesToSpawn, minY, maxY
+	 * blockID, maxVeinSize, chancesToSpawn, minY, maxY
 	 */
 	public static ArrayList<int[]> ores = new ArrayList<int[]>(5);
 	
