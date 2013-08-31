@@ -21,14 +21,14 @@ public class Blocks
 	
 	//Initialising Blocks
 	public static final Block copperOre	= new CustomOre(Strings.COPPER_ORE, BlockIds.BlockID_CopperOre).setHardness(3.0F).setResistance(5.0F);
-	public static final Block leadOre = new CustomOre(Strings.COPPER_ORE, BlockIds.BlockID_CopperOre).setHardness(3.0F).setResistance(5.0F);
-	public static final Block tungstenOre = new CustomOre(Strings.COPPER_ORE, BlockIds.BlockID_CopperOre).setHardness(3.0F).setResistance(5.0F);
-	public static final Block siliconOre = new CustomOre(Strings.COPPER_ORE, BlockIds.BlockID_CopperOre).setHardness(3.0F).setResistance(5.0F);
-	public static final Block iridiumOre = new CustomOre(Strings.COPPER_ORE, BlockIds.BlockID_CopperOre).setHardness(3.0F).setResistance(5.0F);
-	public static final Block magnetiteOre = new CustomOre(Strings.COPPER_ORE, BlockIds.BlockID_CopperOre).setHardness(3.0F).setResistance(5.0F);
-	public static final Block aluminiumOre = new CustomOre(Strings.COPPER_ORE, BlockIds.BlockID_CopperOre).setHardness(3.0F).setResistance(5.0F);
-	public static final Block tinOre = new CustomOre(Strings.COPPER_ORE, BlockIds.BlockID_CopperOre).setHardness(3.0F).setResistance(5.0F);
-	public static final Block titaniumOre = new CustomOre(Strings.COPPER_ORE, BlockIds.BlockID_CopperOre).setHardness(3.0F).setResistance(5.0F);
+	public static final Block leadOre = new CustomOre(Strings.LEAD_ORE, BlockIds.BlockID_LeadOre).setHardness(3.0F).setResistance(5.0F);
+	public static final Block tungstenOre = new CustomOre(Strings.TUNGSTEN_ORE, BlockIds.BlockID_TungstenOre).setHardness(3.0F).setResistance(5.0F);
+	public static final Block siliconOre = new CustomOre(Strings.SILICON_ORE, BlockIds.BlockID_SiliconOre).setHardness(3.0F).setResistance(5.0F);
+	public static final Block iridiumOre = new CustomOre(Strings.IRIDIUM_ORE, BlockIds.BlockID_IridiumOre).setHardness(3.0F).setResistance(5.0F);
+	public static final Block magnetiteOre = new CustomOre(Strings.MAGNETITE_ORE, BlockIds.BlockID_MagnetiteOre).setHardness(3.0F).setResistance(5.0F);
+	public static final Block aluminiumOre = new CustomOre(Strings.ALUMINIUM_ORE, BlockIds.BlockID_AluminiumOre).setHardness(3.0F).setResistance(5.0F);
+	public static final Block tinOre = new CustomOre(Strings.TIN_ORE, BlockIds.BlockID_TinOre).setHardness(3.0F).setResistance(5.0F);
+	public static final Block titaniumOre = new CustomOre(Strings.TITANIUM_ORE, BlockIds.BlockID_TitaniumOre).setHardness(3.0F).setResistance(5.0F);
 	
 	
     /**
