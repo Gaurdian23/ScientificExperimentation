@@ -1,22 +1,22 @@
 package minecraft.phoenix.scienceExp.proxy;
 
+import minecraft.phoenix.scienceExp.gases.BlockRenderGas;
+import cpw.mods.fml.client.registry.RenderingRegistry;
+
 /**
- * 21 Century Mod
+ * Scientific Experimentation Mod
  * 
- * ClientProxyCivilization
- * 
- * @licence Lesser GNU Public License v3 (http://www.gnu.org/licenses/lgpl.html)
- * @author nightwolf98
- * @author Martijn
  * @author jack9515
- *
+ * 
  */
 
-public class ClientProxy extends CommonProxy{
+public class ClientProxy extends CommonProxy
+{
+	public static BlockRenderGas blockRenderGas = new BlockRenderGas(RenderingRegistry.getNextAvailableRenderId());
 	
 	@Override
 	public void registerThings()
 	{
-		//MinecraftForgeClient.
+		RenderingRegistry.registerBlockHandler(blockRenderGas);
 	}
 }

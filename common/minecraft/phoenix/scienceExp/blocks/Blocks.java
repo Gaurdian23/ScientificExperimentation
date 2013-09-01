@@ -1,11 +1,15 @@
 package minecraft.phoenix.scienceExp.blocks;
 
 import java.util.Random;
+import minecraft.phoenix.scienceExp.gases.BlockFluidGas;
 import minecraft.phoenix.scienceExp.lib.BlockIds;
 import minecraft.phoenix.scienceExp.lib.Strings;
 import minecraft.phoenix.scienceExp.util.CustomOre;
 import minecraft.phoenix.scienceExp.util.WorldGenerator;
 import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
+import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 import cpw.mods.fml.common.registry.GameRegistry;
 
@@ -30,6 +34,9 @@ public class Blocks
 	public static final Block tinOre = new CustomOre(Strings.TIN_ORE, BlockIds.BlockID_TinOre).setHardness(3.0F).setResistance(5.0F);
 	public static final Block titaniumOre = new CustomOre(Strings.TITANIUM_ORE, BlockIds.BlockID_TitaniumOre).setHardness(3.0F).setResistance(5.0F);
 	
+	//Initialise Gases
+	public static final Fluid poison = new Fluid(Strings.POISON_GAS).setDensity(-1000).setGaseous(true).setViscosity(0).setBlockID(BlockIds.BlockID_PoisonGas);
+	public static final Block blockPoison = new BlockFluidGas(BlockIds.BlockID_PoisonGas, poison, Material.water);
 	
     /**
      * Adding all blocks to the game
@@ -47,6 +54,10 @@ public class Blocks
 		registerOre(aluminiumOre, Strings.ALUMINIUM_ORE, 10, 20 + rand.nextInt(2), 1, 64);
 		registerOre(tinOre, Strings.TIN_ORE, 10, 20 + rand.nextInt(2), 1, 64);
 		registerOre(titaniumOre, Strings.TITANIUM_ORE, 10, 20 + rand.nextInt(2), 1, 64);
+		
+		//Register Fluids
+		FluidRegistry.registerFluid(poison);
+		GameRegistry.registerBlock(blockPoison, Strings.POISON_GAS);
 	}
 	
 	/**

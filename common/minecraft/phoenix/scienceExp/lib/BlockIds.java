@@ -1,5 +1,6 @@
 package minecraft.phoenix.scienceExp.lib;
 
+
 /**
  * Scientific Experimentation Mod
  * 
@@ -19,6 +20,8 @@ public class BlockIds {
 	public static final int BlockID_TinOre_Default = 507;
 	public static final int BlockID_TitaniumOre_Default = 508;
 	
+	public static final int BlockID_PoisonGas_Default = 509;
+	
 	public static int BlockID_CopperOre;
 	public static int BlockID_LeadOre;
 	public static int BlockID_TungstenOre;
@@ -28,5 +31,7 @@ public class BlockIds {
 	public static int BlockID_AluminiumOre;
 	public static int BlockID_TinOre;
 	public static int BlockID_TitaniumOre;
+	
+	public static int BlockID_PoisonGas;
 }
 	

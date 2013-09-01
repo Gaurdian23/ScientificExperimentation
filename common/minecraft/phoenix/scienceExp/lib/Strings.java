@@ -11,7 +11,7 @@ package minecraft.phoenix.scienceExp.lib;
 public class Strings {
 
 	//All strings used in the mod
-	//Core
+	//Ores
 	public static final String COPPER_ORE = "oreCopper";
 	public static final String LEAD_ORE = "oreLead";
 	public static final String TUNGSTEN_ORE = "oreTungsten";
@@ -21,4 +21,7 @@ public class Strings {
 	public static final String ALUMINIUM_ORE = "oreAluminium";
 	public static final String TIN_ORE = "oreTin";
 	public static final String TITANIUM_ORE = "oreTitanium";
+	
+	//Fluids and Gases
+	public static final String POISON_GAS = "gasPoison";
 }

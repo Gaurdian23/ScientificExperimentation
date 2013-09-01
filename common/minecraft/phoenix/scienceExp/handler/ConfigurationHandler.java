@@ -28,6 +28,7 @@ public class ConfigurationHandler
 		{
 			config.load();
 			
+			//Ores
 			BlockIds.BlockID_CopperOre = config.getBlock(Strings.COPPER_ORE, BlockIds.BlockID_CopperOre_Default).getInt(BlockIds.BlockID_CopperOre_Default);
 			BlockIds.BlockID_LeadOre = config.getBlock(Strings.LEAD_ORE, BlockIds.BlockID_LeadOre_Default).getInt(BlockIds.BlockID_LeadOre_Default);
 			BlockIds.BlockID_TungstenOre = config.getBlock(Strings.TUNGSTEN_ORE, BlockIds.BlockID_TungstenOre_Default).getInt(BlockIds.BlockID_TungstenOre_Default);
@@ -37,6 +38,9 @@ public class ConfigurationHandler
 			BlockIds.BlockID_AluminiumOre = config.getBlock(Strings.ALUMINIUM_ORE, BlockIds.BlockID_AluminiumOre_Default).getInt(BlockIds.BlockID_AluminiumOre_Default);
 			BlockIds.BlockID_TinOre = config.getBlock(Strings.TIN_ORE, BlockIds.BlockID_TinOre_Default).getInt(BlockIds.BlockID_TinOre_Default);
 			BlockIds.BlockID_TitaniumOre = config.getBlock(Strings.TITANIUM_ORE, BlockIds.BlockID_TitaniumOre_Default).getInt(BlockIds.BlockID_TitaniumOre_Default);
+			
+			//Fluids and gases
+			BlockIds.BlockID_PoisonGas = config.getBlock(Strings.POISON_GAS, BlockIds.BlockID_PoisonGas_Default).getInt(BlockIds.BlockID_PoisonGas_Default);
 		}
 		catch (Exception e)
 		{

@@ -1,6 +1,5 @@
 package minecraft.phoenix.scienceExp.proxy;
 
-
 /**
  * Scientific Experimentation Mod
  * 
