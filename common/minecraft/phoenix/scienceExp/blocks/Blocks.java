@@ -1,13 +1,14 @@
 package minecraft.phoenix.scienceExp.blocks;
 
 import java.util.Random;
-import minecraft.phoenix.scienceExp.gases.BlockFluidGas;
 import minecraft.phoenix.scienceExp.lib.BlockIds;
 import minecraft.phoenix.scienceExp.lib.Strings;
 import minecraft.phoenix.scienceExp.util.CustomOre;
 import minecraft.phoenix.scienceExp.util.WorldGenerator;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraftforge.fluids.BlockFluidBase;
+import net.minecraftforge.fluids.BlockFluidFinite;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.oredict.OreDictionary;
@@ -35,8 +36,8 @@ public class Blocks
 	public static final Block titaniumOre = new CustomOre(Strings.TITANIUM_ORE, BlockIds.BlockID_TitaniumOre).setHardness(3.0F).setResistance(5.0F);
 	
 	//Initialise Gases
-	public static final Fluid poison = new Fluid(Strings.POISON_GAS).setDensity(-1000).setGaseous(true).setViscosity(0).setBlockID(BlockIds.BlockID_PoisonGas);
-	public static final Block blockPoison = new BlockFluidGas(BlockIds.BlockID_PoisonGas, poison, Material.water);
+	public static final Fluid poison = new Fluid(Strings.POISON_GAS);
+	public static final Block blockPoison = new BlockFluidFinite(BlockIds.BlockID_PoisonGas, poison, Material.air);
 	
     /**
      * Adding all blocks to the game
@@ -56,8 +57,7 @@ public class Blocks
 		registerOre(titaniumOre, Strings.TITANIUM_ORE, 10, 20 + rand.nextInt(2), 1, 64);
 		
 		//Register Fluids
-		FluidRegistry.registerFluid(poison);
-		GameRegistry.registerBlock(blockPoison, Strings.POISON_GAS);
+		registerFluid(poison, (BlockFluidBase) blockPoison, BlockIds.BlockID_PoisonGas, -1000, true, 100);
 	}
 	
 	/**
@@ -75,5 +75,13 @@ public class Blocks
 		GameRegistry.registerBlock(ore, name);
 		OreDictionary.registerOre(name, ore);
 		WorldGenerator.ores.add(new int[]{ore.blockID, maxVeinSize, chancesToSpawn, minY, maxY});
+	}
+	
+	public static void registerFluid(Fluid fluid, BlockFluidBase block, int blockID, int density, boolean gaseous, int viscosity)
+	{
+		fluid.setDensity(density).setGaseous(gaseous).setViscosity(viscosity).setBlockID(blockID);
+		block.setDensity(density).setUnlocalizedName(fluid.getUnlocalizedName());
+		FluidRegistry.registerFluid(fluid);
+		GameRegistry.registerBlock(block, fluid.getUnlocalizedName());
 	}
 }
