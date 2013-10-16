@@ -2,5 +2,15 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties version="1.0">
 	<comment>English (en_US) Localization File</comment>
-    <entry key="tile.copperOre.name">Copper Ore</entry>
+    <entry key="tile.oreCopper.name">Copper Ore</entry>
+    <entry key="tile.oreLead.name">Lead Ore</entry>
+    <entry key="tile.oreTungsten.name">Tungsten Ore</entry>
+    <entry key="tile.oreSilicon.name">Silicon Ore</entry>
+    <entry key="tile.oreIridium.name">Iridium Ore</entry>
+    <entry key="tile.oreMagnetite.name">Magnetite Ore</entry>
+    <entry key="tile.oreAluminium.name">Aluminum Ore</entry>
+    <entry key="tile.oreTin.name">Tin Ore</entry>
+    <entry key="tile.oreTitanium.name">Titanium Ore</entry>
+    
+    <entry key="tile.fluid.gasPoison.name">Poison Gas</entry>
 </properties>

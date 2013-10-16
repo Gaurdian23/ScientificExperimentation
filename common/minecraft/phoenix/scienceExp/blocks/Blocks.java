@@ -8,7 +8,6 @@ import minecraft.phoenix.scienceExp.util.WorldGenerator;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraftforge.fluids.BlockFluidBase;
-import net.minecraftforge.fluids.BlockFluidFinite;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.oredict.OreDictionary;
@@ -37,7 +36,7 @@ public class Blocks
 	
 	//Initialise Gases
 	public static final Fluid poison = new Fluid(Strings.POISON_GAS);
-	public static final Block blockPoison = new BlockFluidFinite(BlockIds.BlockID_PoisonGas, poison, Material.air);
+	public static final Block blockPoison = new BlockPoison(BlockIds.BlockID_PoisonGas, poison, Material.air);
 	
     /**
      * Adding all blocks to the game
