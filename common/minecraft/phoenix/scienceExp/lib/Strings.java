@@ -8,8 +8,8 @@ package minecraft.phoenix.scienceExp.lib;
  *
  */
 
-public class Strings {
-
+public final class Strings
+{
 	//All strings used in the mod
 	//Ores
 	public static final String COPPER_ORE = "oreCopper";
@@ -24,4 +24,10 @@ public class Strings {
 	
 	//Fluids and Gases
 	public static final String POISON_GAS = "gasPoison";
+	
+	//Items
+	public static final String HAZMAT_HELMET = "helmetHazmat";
+	public static final String HAZMAT_PLATE = "plateHazmat";
+	public static final String HAZMAT_LEGS = "legsHazmat";
+	public static final String HAZMAT_BOOTS = "bootsHazmat";
 }

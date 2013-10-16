@@ -22,6 +22,7 @@ public class BlockIds {
 	
 	public static final int BlockID_PoisonGas_Default = 509;
 	
+	
 	public static int BlockID_CopperOre;
 	public static int BlockID_LeadOre;
 	public static int BlockID_TungstenOre;

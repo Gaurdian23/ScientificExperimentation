@@ -3,6 +3,7 @@ package minecraft.phoenix.scienceExp.handler;
 import java.io.File;
 import java.util.logging.Level;
 import minecraft.phoenix.scienceExp.lib.BlockIds;
+import minecraft.phoenix.scienceExp.lib.ItemIds;
 import minecraft.phoenix.scienceExp.lib.Reference;
 import minecraft.phoenix.scienceExp.lib.Strings;
 import net.minecraftforge.common.Configuration;
@@ -41,6 +42,12 @@ public class ConfigurationHandler
 			
 			//Fluids and gases
 			BlockIds.BlockID_PoisonGas = config.getBlock(Strings.POISON_GAS, BlockIds.BlockID_PoisonGas_Default).getInt(BlockIds.BlockID_PoisonGas_Default);
+			
+			//Items
+			ItemIds.ItemID_helmetHazmat = config.getItem(Strings.HAZMAT_HELMET, ItemIds.ItemID_helmetHazmat_Default).getInt(ItemIds.ItemID_helmetHazmat_Default);
+			ItemIds.ItemID_plateHazmat = config.getItem(Strings.HAZMAT_PLATE, ItemIds.ItemID_plateHazmat_Default).getInt(ItemIds.ItemID_plateHazmat_Default);
+			ItemIds.ItemID_legsHazmat = config.getItem(Strings.HAZMAT_LEGS, ItemIds.ItemID_legsHazmat_Default).getInt(ItemIds.ItemID_legsHazmat_Default);
+			ItemIds.ItemID_bootsHazmat = config.getItem(Strings.HAZMAT_BOOTS, ItemIds.ItemID_bootsHazmat_Default).getInt(ItemIds.ItemID_bootsHazmat_Default);
 		}
 		catch (Exception e)
 		{
