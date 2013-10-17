@@ -28,7 +28,6 @@ public class Items
 	public static void init()
 	{
 		GameRegistry.registerItem(helmetHazmat, Strings.HAZMAT_HELMET);
-		System.out.println(helmetHazmat.itemID);
 		GameRegistry.registerItem(plateHazmat, Strings.HAZMAT_PLATE);
 		GameRegistry.registerItem(legsHazmat, Strings.HAZMAT_LEGS);
 		GameRegistry.registerItem(bootsHazmat, Strings.HAZMAT_BOOTS);
