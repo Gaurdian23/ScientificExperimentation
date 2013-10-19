@@ -24,10 +24,11 @@ public class BlockPoison extends BlockFluidFinite
 		if(entity instanceof EntityLivingBase)
 		{
 			EntityLivingBase el = (EntityLivingBase) entity;
-			if((el.getCurrentItemOrArmor(1) == null && el.getCurrentItemOrArmor(1).itemID != Items.helmetHazmat.itemID)
-					|| (el.getCurrentItemOrArmor(2) == null && el.getCurrentItemOrArmor(2).itemID != Items.plateHazmat.itemID)
-					|| (el.getCurrentItemOrArmor(3) == null && el.getCurrentItemOrArmor(3).itemID != Items.legsHazmat.itemID)
-					|| (el.getCurrentItemOrArmor(4) == null && el.getCurrentItemOrArmor(4).itemID != Items.bootsHazmat.itemID))
+			//This checks that they are wearing the armour, the nulls stop NullPointerExceptions
+			if(!((el.getCurrentItemOrArmor(4) != null && el.getCurrentItemOrArmor(4).itemID == Items.helmetHazmat.itemID)
+					|| (el.getCurrentItemOrArmor(3) != null && el.getCurrentItemOrArmor(3).itemID == Items.plateHazmat.itemID)
+					|| (el.getCurrentItemOrArmor(2) != null && el.getCurrentItemOrArmor(2).itemID == Items.legsHazmat.itemID)
+					|| (el.getCurrentItemOrArmor(1) != null && el.getCurrentItemOrArmor(1).itemID == Items.bootsHazmat.itemID)))
 				el.addPotionEffect(new PotionEffect(Potion.poison.id, 300));
 		}
 	}
