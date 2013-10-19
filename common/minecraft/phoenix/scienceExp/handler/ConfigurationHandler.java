@@ -43,11 +43,14 @@ public class ConfigurationHandler
 			//Fluids and gases
 			BlockIds.BlockID_PoisonGas = config.getBlock(Strings.POISON_GAS, BlockIds.BlockID_PoisonGas_Default).getInt(BlockIds.BlockID_PoisonGas_Default);
 			
-			//Items
+			//Armour
 			ItemIds.ItemID_helmetHazmat = config.getItem(Strings.HAZMAT_HELMET, ItemIds.ItemID_helmetHazmat_Default).getInt(ItemIds.ItemID_helmetHazmat_Default);
 			ItemIds.ItemID_plateHazmat = config.getItem(Strings.HAZMAT_PLATE, ItemIds.ItemID_plateHazmat_Default).getInt(ItemIds.ItemID_plateHazmat_Default);
 			ItemIds.ItemID_legsHazmat = config.getItem(Strings.HAZMAT_LEGS, ItemIds.ItemID_legsHazmat_Default).getInt(ItemIds.ItemID_legsHazmat_Default);
 			ItemIds.ItemID_bootsHazmat = config.getItem(Strings.HAZMAT_BOOTS, ItemIds.ItemID_bootsHazmat_Default).getInt(ItemIds.ItemID_bootsHazmat_Default);
+
+			//Science Items
+			ItemIds.ItemID_element = config.getItem(Strings.ELEMENT, ItemIds.ItemID_element_Default).getInt(ItemIds.ItemID_element_Default);
 		}
 		catch (Exception e)
 		{

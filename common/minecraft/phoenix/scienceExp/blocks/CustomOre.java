@@ -1,4 +1,4 @@
-package minecraft.phoenix.scienceExp.util;
+package minecraft.phoenix.scienceExp.blocks;
 
 import minecraft.phoenix.scienceExp.lib.Reference;
 import net.minecraft.block.Block;

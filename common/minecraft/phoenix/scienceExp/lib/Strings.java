@@ -30,4 +30,5 @@ public final class Strings
 	public static final String HAZMAT_PLATE = "plateHazmat";
 	public static final String HAZMAT_LEGS = "legsHazmat";
 	public static final String HAZMAT_BOOTS = "bootsHazmat";
+	public static final String ELEMENT = "element";
 }

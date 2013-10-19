@@ -1,7 +1,11 @@
 package minecraft.phoenix.scienceExp.blocks;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import minecraft.phoenix.scienceExp.items.Items;
+import minecraft.phoenix.scienceExp.lib.Reference;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.potion.Potion;
@@ -31,5 +35,12 @@ public class BlockPoison extends BlockFluidFinite
 					|| (el.getCurrentItemOrArmor(1) != null && el.getCurrentItemOrArmor(1).itemID == Items.bootsHazmat.itemID)))
 				el.addPotionEffect(new PotionEffect(Potion.poison.id, 300));
 		}
+	}
+	
+	@SideOnly(Side.CLIENT)
+	@Override
+	public void registerIcons(IconRegister par1IconRegister)
+	{
+		this.blockIcon = par1IconRegister.registerIcon(Reference.modid + ":" + (this.getUnlocalizedName().substring(11)));
 	}
 }

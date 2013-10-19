@@ -3,7 +3,7 @@ package minecraft.phoenix.scienceExp.blocks;
 import java.util.Random;
 import minecraft.phoenix.scienceExp.lib.BlockIds;
 import minecraft.phoenix.scienceExp.lib.Strings;
-import minecraft.phoenix.scienceExp.util.CustomOre;
+import minecraft.phoenix.scienceExp.proxy.CommonProxy;
 import minecraft.phoenix.scienceExp.util.WorldGenerator;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -73,6 +73,7 @@ public class Blocks
 	{
 		GameRegistry.registerBlock(ore, name);
 		OreDictionary.registerOre(name, ore);
+		ore.setCreativeTab(CommonProxy.temp);
 		WorldGenerator.ores.add(new int[]{ore.blockID, maxVeinSize, chancesToSpawn, minY, maxY});
 	}
 	
@@ -82,5 +83,6 @@ public class Blocks
 		block.setDensity(density).setUnlocalizedName(fluid.getUnlocalizedName());
 		FluidRegistry.registerFluid(fluid);
 		GameRegistry.registerBlock(block, fluid.getUnlocalizedName());
+		block.setCreativeTab(CommonProxy.temp);
 	}
 }
