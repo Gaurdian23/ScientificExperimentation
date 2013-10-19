@@ -2,8 +2,10 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties version="1.0">
 	<comment>English (en_US) Localization File</comment>
+    
+    <entry key="itemGroup.temp">Temp</entry>
+    <entry key="itemGroup.elements">Elements</entry>
 
-    <comment>Blocks</comment>
     <entry key="tile.oreCopper.name">Copper Ore</entry>
     <entry key="tile.oreLead.name">Lead Ore</entry>
     <entry key="tile.oreTungsten.name">Tungsten Ore</entry>
@@ -16,13 +18,12 @@
     
     <entry key="tile.fluid.gasPoison.name">Poison Gas</entry>
 
-    <comment>Items</comment>
+
     <entry key="item.helmetHazmat.name">Hazmat Helmet</entry>
     <entry key="item.plateHazmat.name">Hazmat Chestplate</entry>
     <entry key="item.legsHazmat.name">Hazmat Legs</entry>
     <entry key="item.bootsHazmat.name">Hazmat Boots</entry>
 
-	<comment>Elements</comment>
     <entry key="item.element.unknown.name">Unknown</entry>
     <entry key="item.element.hydrogen.name">Hydrogen</entry>
     <entry key="item.element.helium.name">Helium</entry>

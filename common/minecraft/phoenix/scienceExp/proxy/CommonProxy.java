@@ -18,8 +18,8 @@ public class CommonProxy
 	 * Registers things which don't have a specific place.
 	 */
 	public static final EnumArmorMaterial HAZMAT = EnumHelper.addArmorMaterial("HAZMAT", 2, new int[]{1, 1, 1, 1}, 0);
-	public static final CreativeTabs temp = new CreativeTabs("Temp");
-	public static final CreativeTabs elements = new CreativeTabs("Elements");
+	public static final CreativeTabs temp = new CreativeTabs("temp");
+	public static final CreativeTabs elements = new CreativeTabs("elements");
 	
 	public void registerThings()
 	{
