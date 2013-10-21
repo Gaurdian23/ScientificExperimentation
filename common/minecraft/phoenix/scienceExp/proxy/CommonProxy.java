@@ -1,10 +1,12 @@
 package minecraft.phoenix.scienceExp.proxy;
 
+import minecraft.phoenix.scienceExp.ScienceExp;
 import minecraft.phoenix.scienceExp.handler.ScienceGuiHandler;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.EnumArmorMaterial;
 import net.minecraftforge.common.EnumHelper;
 import cpw.mods.fml.common.network.IGuiHandler;
+import cpw.mods.fml.common.network.NetworkRegistry;
 
 
 /**
@@ -24,8 +26,8 @@ public class CommonProxy
 	public static final CreativeTabs elements = new CreativeTabs("elements");
 	public static final IGuiHandler scienceGuiHandler = new ScienceGuiHandler();
 	
-	public void registerThings()
+	public static void registerThings()
 	{
-		
+		NetworkRegistry.instance().registerGuiHandler(ScienceExp.instance, scienceGuiHandler);
 	}
 }

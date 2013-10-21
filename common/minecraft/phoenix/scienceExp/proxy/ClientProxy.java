@@ -9,9 +9,7 @@ package minecraft.phoenix.scienceExp.proxy;
 
 public class ClientProxy extends CommonProxy
 {
-	
-	@Override
-	public void registerThings()
+	public static void registerThings()
 	{
 		
 	}

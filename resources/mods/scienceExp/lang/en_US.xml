@@ -5,6 +5,7 @@
     
     <entry key="itemGroup.temp">Temp</entry>
     <entry key="itemGroup.elements">Elements</entry>
+    <entry key="container.lab">Lab</entry>
 
     <entry key="tile.oreCopper.name">Copper Ore</entry>
     <entry key="tile.oreLead.name">Lead Ore</entry>
@@ -15,9 +16,10 @@
     <entry key="tile.oreAluminium.name">Aluminum Ore</entry>
     <entry key="tile.oreTin.name">Tin Ore</entry>
     <entry key="tile.oreTitanium.name">Titanium Ore</entry>
+    <entry key="tile.lab.name">Lab</entry>
     
     <entry key="tile.fluid.gasPoison.name">Poison Gas</entry>
-
+    
 
     <entry key="item.helmetHazmat.name">Hazmat Helmet</entry>
     <entry key="item.plateHazmat.name">Hazmat Chestplate</entry>

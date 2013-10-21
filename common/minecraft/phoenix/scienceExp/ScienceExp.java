@@ -16,7 +16,6 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
-import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 /**
@@ -54,9 +53,8 @@ public class ScienceExp
     @EventHandler
     public void init(FMLInitializationEvent event)
     {
-    	NetworkRegistry.instance().registerGuiHandler(ScienceExp.instance, proxy.scienceGuiHandler);
-		//Registering things which dont have to be in the Main Mod file
-		proxy.registerThings();
+    	//Registering things
+    	CommonProxy.registerThings();
     	
     	//Initialising the Core Items
 	    Items.init();   
