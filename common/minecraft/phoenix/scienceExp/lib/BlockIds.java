@@ -21,6 +21,7 @@ public class BlockIds {
 	public static final int BlockID_TitaniumOre_Default = 508;
 	
 	public static final int BlockID_PoisonGas_Default = 509;
+	public static final int BlockID_Lab_Default = 510;
 	
 	
 	public static int BlockID_CopperOre;
@@ -34,5 +35,6 @@ public class BlockIds {
 	public static int BlockID_TitaniumOre;
 	
 	public static int BlockID_PoisonGas;
+	public static int BlockID_Lab;
 }
 	

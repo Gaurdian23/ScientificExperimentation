@@ -31,4 +31,6 @@ public final class Strings
 	public static final String HAZMAT_LEGS = "legsHazmat";
 	public static final String HAZMAT_BOOTS = "bootsHazmat";
 	public static final String ELEMENT = "element";
+	public static final String COMPOUND = "compound";
+	public static final String LAB = "lab";
 }

@@ -39,6 +39,7 @@ public class ConfigurationHandler
 			BlockIds.BlockID_AluminiumOre = config.getBlock(Strings.ALUMINIUM_ORE, BlockIds.BlockID_AluminiumOre_Default).getInt(BlockIds.BlockID_AluminiumOre_Default);
 			BlockIds.BlockID_TinOre = config.getBlock(Strings.TIN_ORE, BlockIds.BlockID_TinOre_Default).getInt(BlockIds.BlockID_TinOre_Default);
 			BlockIds.BlockID_TitaniumOre = config.getBlock(Strings.TITANIUM_ORE, BlockIds.BlockID_TitaniumOre_Default).getInt(BlockIds.BlockID_TitaniumOre_Default);
+			BlockIds.BlockID_Lab = config.getBlock(Strings.LAB, BlockIds.BlockID_Lab_Default).getInt(BlockIds.BlockID_Lab_Default);
 			
 			//Fluids and gases
 			BlockIds.BlockID_PoisonGas = config.getBlock(Strings.POISON_GAS, BlockIds.BlockID_PoisonGas_Default).getInt(BlockIds.BlockID_PoisonGas_Default);
@@ -51,6 +52,7 @@ public class ConfigurationHandler
 
 			//Science Items
 			ItemIds.ItemID_element = config.getItem(Strings.ELEMENT, ItemIds.ItemID_element_Default).getInt(ItemIds.ItemID_element_Default);
+			ItemIds.ItemID_compound = config.getItem(Strings.COMPOUND, ItemIds.ItemID_compound_Default).getInt(ItemIds.ItemID_compound_Default);
 		}
 		catch (Exception e)
 		{

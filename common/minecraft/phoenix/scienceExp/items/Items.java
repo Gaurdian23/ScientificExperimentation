@@ -23,6 +23,7 @@ public class Items
 	
 	//Elements
 	public static final Item element = new ItemElement(ItemIds.ItemID_element);
+	public static final Item compound = new ItemCompound(ItemIds.ItemID_compound);
 	
     /**
      * Adding all items to the game
@@ -41,5 +42,6 @@ public class Items
 		GameRegistry.registerItem(bootsHazmat, Strings.HAZMAT_BOOTS);
 		
 		GameRegistry.registerItem(element, Strings.ELEMENT);
+		GameRegistry.registerItem(compound, Strings.COMPOUND);
 	}
 }

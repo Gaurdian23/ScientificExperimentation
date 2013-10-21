@@ -34,6 +34,8 @@ public class Blocks
 	public static final Block tinOre = new CustomOre(Strings.TIN_ORE, BlockIds.BlockID_TinOre).setHardness(3.0F).setResistance(5.0F);
 	public static final Block titaniumOre = new CustomOre(Strings.TITANIUM_ORE, BlockIds.BlockID_TitaniumOre).setHardness(3.0F).setResistance(5.0F);
 	
+	public static final Block lab = new BlockLab(BlockIds.BlockID_Lab, Strings.LAB);
+	
 	//Initialise Gases
 	public static final Fluid poison = new Fluid(Strings.POISON_GAS);
 	public static final Block blockPoison = new BlockPoison(BlockIds.BlockID_PoisonGas, poison, Material.air);
@@ -43,6 +45,9 @@ public class Blocks
      */
 	public static void init()
 	{
+		GameRegistry.registerBlock(lab, Strings.LAB);
+		GameRegistry.registerTileEntity(TileEntityLab.class, Strings.LAB);
+		
 		//Registering Ores
 		//TODO Tweak ore spawning
 		registerOre(copperOre, Strings.COPPER_ORE, 10, 20 + rand.nextInt(2), 1, 64);
