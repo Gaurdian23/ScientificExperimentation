@@ -1,5 +1,6 @@
 package minecraft.phoenix.scienceExp.handler;
 
+import minecraft.phoenix.scienceExp.blocks.TileEntityLab;
 import minecraft.phoenix.scienceExp.gui.ContainerLab;
 import minecraft.phoenix.scienceExp.gui.GuiLab;
 import net.minecraft.entity.player.EntityPlayer;
@@ -20,7 +21,7 @@ public class ScienceGuiHandler implements IGuiHandler
 			switch(ID)
 			{
 			case 0:
-				return new ContainerLab(player.inventory, world, x, y, z);
+				return new ContainerLab(player.inventory, (TileEntityLab) tileEntity);
 			}	
 		}
 		return null;
@@ -36,7 +37,7 @@ public class ScienceGuiHandler implements IGuiHandler
 			switch(ID)
 			{
 			case 0:
-				return new GuiLab(player.inventory, world, x, y, z);
+				return new GuiLab(player.inventory, (TileEntityLab) tileEntity);
 			}
 		}
 		return null;

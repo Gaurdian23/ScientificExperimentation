@@ -1,43 +1,45 @@
 package minecraft.phoenix.scienceExp.gui;
 
 import minecraft.phoenix.scienceExp.blocks.Blocks;
+import minecraft.phoenix.scienceExp.blocks.TileEntityLab;
+import minecraft.phoenix.scienceExp.lib.Strings;
+import minecraft.phoenix.scienceExp.util.InventoryReact;
 import minecraft.phoenix.scienceExp.util.ReactionManager;
+import minecraft.phoenix.scienceExp.util.SlotReact;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
-import net.minecraft.inventory.InventoryCraftResult;
-import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.inventory.Slot;
-import net.minecraft.inventory.SlotCrafting;
 import net.minecraft.item.ItemStack;
-import net.minecraft.world.World;
 
 public class ContainerLab extends Container
 {
     /** The crafting matrix inventory (4x4). */
-    public InventoryCrafting labMatrix = new InventoryCrafting(this, 3, 3);
-    public IInventory labResult = new InventoryCraftResult();
-    private World worldObj;
-    private int posX;
-    private int posY;
-    private int posZ;
+    public InventoryReact labMatrix = new InventoryReact(this, 4, 4, "container." + Strings.LAB);
+    public InventoryReact labResult = new InventoryReact(this, 4, 4, "Result");
+    private TileEntityLab tileEntityLab;
 
-    public ContainerLab(InventoryPlayer par1InventoryPlayer, World par2World, int par3, int par4, int par5)
+    public ContainerLab(InventoryPlayer inventoryPlayer, TileEntityLab tileEntityLab)
     {
-        this.worldObj = par2World;
-        this.posX = par3;
-        this.posY = par4;
-        this.posZ = par5;
-        this.addSlotToContainer(new SlotCrafting(par1InventoryPlayer.player, this.labMatrix, this.labResult, 0, 124, 35));
+        this.tileEntityLab = tileEntityLab;
+    	
         int l;
         int i1;
-
+        
         for (l = 0; l < 3; ++l)
         {
             for (i1 = 0; i1 < 3; ++i1)
             {
-                this.addSlotToContainer(new Slot(this.labMatrix, i1 + l * 3, 30 + i1 * 18, 17 + l * 18));
+                this.addSlotToContainer(new Slot(this.labMatrix, i1 + l * 3, 8 + i1 * 18, 17 + l * 18));
+            }
+        }
+        
+        for (l = 0; l < 3; ++l)
+        {
+            for (i1 = 0; i1 < 3; ++i1)
+            {
+                this.addSlotToContainer(this.addSlotToContainer(new SlotReact(inventoryPlayer.player, this.labMatrix, this.labResult, i1 + l * 3, 116 + i1 * 18, 17 + l * 18)));
             }
         }
 
@@ -45,13 +47,13 @@ public class ContainerLab extends Container
         {
             for (i1 = 0; i1 < 9; ++i1)
             {
-                this.addSlotToContainer(new Slot(par1InventoryPlayer, i1 + l * 9 + 9, 8 + i1 * 18, 84 + l * 18));
+                this.addSlotToContainer(new Slot(inventoryPlayer, i1 + l * 9 + 9, 8 + i1 * 18, 84 + l * 18));
             }
         }
 
         for (l = 0; l < 9; ++l)
         {
-            this.addSlotToContainer(new Slot(par1InventoryPlayer, l, 8 + l * 18, 142));
+            this.addSlotToContainer(new Slot(inventoryPlayer, l, 8 + l * 18, 142));
         }
 
         this.onCraftMatrixChanged(this.labMatrix);
@@ -62,7 +64,7 @@ public class ContainerLab extends Container
      */
     public void onCraftMatrixChanged(IInventory par1IInventory)
     {
-        this.labResult.setInventorySlotContents(0, ReactionManager.getInstance().calculateOutput(this.labMatrix, this.worldObj));
+        this.labResult.setInventorySlotContents(ReactionManager.getInstance().calculateOutput(this.labMatrix, this.labResult, this.tileEntityLab.worldObj));
     }
 
     /**
@@ -71,24 +73,11 @@ public class ContainerLab extends Container
     public void onContainerClosed(EntityPlayer par1EntityPlayer)
     {
         super.onContainerClosed(par1EntityPlayer);
-
-        if (!this.worldObj.isRemote)
-        {
-            for (int i = 0; i < 9; ++i)
-            {
-                ItemStack itemstack = this.labMatrix.getStackInSlotOnClosing(i);
-
-                if (itemstack != null)
-                {
-                    par1EntityPlayer.dropPlayerItem(itemstack);
-                }
-            }
-        }
     }
 
     public boolean canInteractWith(EntityPlayer par1EntityPlayer)
     {
-        return this.worldObj.getBlockId(this.posX, this.posY, this.posZ) != Blocks.lab.blockID ? false : par1EntityPlayer.getDistanceSq((double)this.posX + 0.5D, (double)this.posY + 0.5D, (double)this.posZ + 0.5D) <= 64.0D;
+        return this.tileEntityLab.worldObj.getBlockId(this.tileEntityLab.xCoord, this.tileEntityLab.yCoord, this.tileEntityLab.zCoord) != Blocks.lab.blockID ? false : par1EntityPlayer.getDistanceSq((double)this.tileEntityLab.xCoord + 0.5D, (double)this.tileEntityLab.yCoord + 0.5D, (double)this.tileEntityLab.zCoord + 0.5D) <= 64.0D;
     }
 
     /**

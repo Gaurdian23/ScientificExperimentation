@@ -1,19 +1,22 @@
 package minecraft.phoenix.scienceExp.gui;
 
+import minecraft.phoenix.scienceExp.blocks.TileEntityLab;
+import minecraft.phoenix.scienceExp.lib.Reference;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.World;
 import org.lwjgl.opengl.GL11;
 
 public class GuiLab extends GuiContainer
 {
-	private static final ResourceLocation guiImage = new ResourceLocation("textures/gui/container/crafting_table.png");
+	private static final ResourceLocation guiImage = new ResourceLocation(Reference.modid.toLowerCase(), "textures/gui/lab.png");
+	private TileEntityLab labInventory;
 
-    public GuiLab(InventoryPlayer par1InventoryPlayer, World par2World, int par3, int par4, int par5)
+    public GuiLab(InventoryPlayer par1InventoryPlayer, TileEntityLab tileEntityLab)
     {
-        super(new ContainerLab(par1InventoryPlayer, par2World, par3, par4, par5));
+        super(new ContainerLab(par1InventoryPlayer, tileEntityLab));
+        this.labInventory = tileEntityLab;
     }
 
     /**
@@ -21,7 +24,7 @@ public class GuiLab extends GuiContainer
      */
     protected void drawGuiContainerForegroundLayer(int par1, int par2)
     {
-        this.fontRenderer.drawString(I18n.func_135053_a("container.lab"), 28, 6, 4210752);
+        this.fontRenderer.drawString(I18n.func_135053_a("container.lab"), 8, 6, 4210752);
         this.fontRenderer.drawString(I18n.func_135053_a("container.inventory"), 8, this.ySize - 96 + 2, 4210752);
     }
 
@@ -35,5 +38,15 @@ public class GuiLab extends GuiContainer
         int k = (this.width - this.xSize) / 2;
         int l = (this.height - this.ySize) / 2;
         this.drawTexturedModalRect(k, l, 0, 0, this.xSize, this.ySize);
+        int i1;
+        
+        if (this.labInventory.isBurning())
+        {
+            i1 = this.labInventory.getBurnTimeRemainingScaled(12);
+            this.drawTexturedModalRect(k + 56, l + 36 + 12 - i1, 176, 12 - i1, 14, i1 + 2);
+        }
+
+        i1 = this.labInventory.getCookProgressScaled(24);
+        this.drawTexturedModalRect(k + 79, l + 34, 176, 14, i1 + 1, 16);
     }
 }

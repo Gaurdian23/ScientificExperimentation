@@ -8,7 +8,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
 public class BlockLab extends BlockContainer
-{
+{	
 	protected BlockLab(int id, String lab)
 	{
 		super(id, Material.iron);
