@@ -2,6 +2,7 @@ package minecraft.phoenix.scienceExp.chemistry;
 
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.regex.Matcher;
@@ -9,12 +10,12 @@ import java.util.regex.Pattern;
 
 public class Compound
 {
-	public HashMap<Object, Integer> components;
+	public LinkedHashMap<Object, Integer> components;
 	public static HashMap<Integer, String> subscript;
 	static
 	{
 		subscript = new HashMap<Integer, String>();
-		subscript.put(1 ,"₁");
+		subscript.put(1 ,"");
 		subscript.put(2 ,"₂");
 		subscript.put(3 ,"₃");
 		subscript.put(4 ,"₄");
@@ -25,7 +26,7 @@ public class Compound
 		subscript.put(9 ,"₉");
 	}
 	
-	public Compound(HashMap<Object, Integer> components)
+	public Compound(LinkedHashMap<Object, Integer> components)
 	{
 		this.components = components;
 	}
@@ -52,7 +53,6 @@ public class Compound
 	
 	public static void fromString(String compound, HashMap<Element, Integer> elements)
 	{
-		compound.replace("₁", "1");
 		compound.replace("₂", "2");
 		compound.replace("₃", "3");
 		compound.replace("₄", "4");
@@ -83,11 +83,16 @@ public class Compound
 	
 	private static void getNumber(String matcherGroup, HashMap<Element, Integer> elements, int multiplier)
 	{
-		Pattern elementPattern = Pattern.compile("[A-Z][a-z]|[A-Z]|\\d");
-		Matcher elementMatcher = elementPattern.matcher(matcherGroup);
-		elementMatcher.find();
-		Element element = Element.symbols.get(elementMatcher.group());
-		elementMatcher.find();
-		elements.put(element, elements.get(element) == null ? Integer.parseInt(elementMatcher.group()) : elements.get(element) + Integer.parseInt(elementMatcher.group()));
+		if(!matcherGroup.matches("[A-Z|[A-Z][a-z]"))
+		{
+			Pattern elementPattern = Pattern.compile("[A-Z][a-z]|[A-Z]|\\d");
+			Matcher elementMatcher = elementPattern.matcher(matcherGroup);
+			elementMatcher.find();
+			Element element = Element.symbols.get(elementMatcher.group());
+			elementMatcher.find();
+			elements.put(element, elements.get(element) == null ? Integer.parseInt(elementMatcher.group()) : elements.get(element) + Integer.parseInt(elementMatcher.group()));
+		}
+		else
+			elements.put(Element.symbols.get(matcherGroup), 1);
 	}
 }

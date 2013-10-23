@@ -1,18 +1,10 @@
 package minecraft.phoenix.scienceExp.chemistry;
 
-import java.io.ObjectOutputStream;
-import java.io.OutputStream;
-import java.util.HashMap;
-import minecraft.phoenix.scienceExp.items.ItemCompound;
+import java.util.LinkedHashMap;
 import minecraft.phoenix.scienceExp.items.Items;
 import minecraft.phoenix.scienceExp.util.InventoryReact;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
-import net.minecraft.nbt.NBTTagString;
 import net.minecraft.world.World;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class ReactionManager
 {
@@ -26,34 +18,18 @@ public class ReactionManager
 
 	public ItemStack[] calculateOutput(InventoryReact labMatrix, InventoryReact labResultMatrix, World worldObj)
 	{
-		HashMap<Element, Integer> elements = new HashMap<Element, Integer>();
 		ItemStack[] output = new ItemStack[labResultMatrix.getSizeInventory()];
-		ItemStack input = labMatrix.getStackInSlot(0);
-		Compound compound = new Compound(new HashMap<Object, Integer>());
-		compound.components.put(Element.HYDROGEN, 2);
-		compound.components.put(Element.SULPHUR, 1);
-		compound.components.put(Element.OXYGEN, 4);
-		if(input.itemID == Items.compound.itemID)
-			Compound.;
-		else
-			output[0] = new ItemStack(Items.compound);
-		setLore(compound.toString(), output[0]);
+		Compound ammoniumSulphate = new Compound(new LinkedHashMap<Object, Integer>());
+		Compound ammonia = new Compound(new LinkedHashMap<Object, Integer>());
+		ammonia.components.put(Element.NITROGEN, 1);
+		ammonia.components.put(Element.HYDROGEN, 4);
+		
+		ammoniumSulphate.components.put(ammonia, 2);
+		ammoniumSulphate.components.put(Element.SULPHUR, 1);
+		ammoniumSulphate.components.put(Element.OXYGEN, 4);
+		output[0] = new ItemStack(Items.compound);
+		output[0].setItemName(ammoniumSulphate.toString());
 		
 		return output;
-	}
-	
-	@SideOnly(Side.CLIENT)
-	public static void setLore(String lore, ItemStack itemStack)
-	{
-		NBTTagCompound tag = itemStack.getTagCompound() != null ? itemStack.getTagCompound() : new NBTTagCompound();
-		NBTTagList list = new NBTTagList();
-		list.appendTag(new NBTTagString("Lore", lore));
-        tag.setTag("Lore", list);
-        itemStack.setTagInfo("display", tag);
-    }
-	
-	private static void writeToNBT(Compound compound, NBTTagCompound tag)
-	{
-		
 	}
 }

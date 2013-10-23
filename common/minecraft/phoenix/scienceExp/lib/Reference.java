@@ -15,5 +15,5 @@ public class Reference
 	public static final String version = "0.1a";
 	public static final String ClientProxy = "minecraft.phoenix.scienceExp.proxy.ClientProxy";
 	public static final String CommonProxy = "minecraft.phoenix.scienceExp.proxy.CommonProxy";
-	public static final String Language_location = "/mods/scienceExp/lang/";
+	public static final String Language_location = "/assets/scienceexp/lang/";
 }
