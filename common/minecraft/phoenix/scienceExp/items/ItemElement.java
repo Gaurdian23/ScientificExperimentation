@@ -3,6 +3,7 @@ package minecraft.phoenix.scienceExp.items;
 import java.util.List;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import minecraft.phoenix.scienceExp.chemistry.Element;
 import minecraft.phoenix.scienceExp.lib.Reference;
 import minecraft.phoenix.scienceExp.lib.Strings;
 import minecraft.phoenix.scienceExp.proxy.CommonProxy;
@@ -15,8 +16,6 @@ import net.minecraft.util.MathHelper;
 
 public class ItemElement extends Item
 {
-	/**List of elements **/
-	public static final String[] elementNames = new String[] {"unknown", "hydrogen", "helium", "lithium", "beryllium"};
 	@SideOnly(Side.CLIENT)
     private Icon[] icons;
 	
@@ -35,7 +34,7 @@ public class ItemElement extends Item
      */
     public Icon getIconFromDamage(int par1)
     {
-        int j = MathHelper.clamp_int(par1, 0, elementNames.length-1);
+        int j = MathHelper.clamp_int(par1, 0, Element.values().length-1);
         return this.icons[j];
     }
 
@@ -45,8 +44,8 @@ public class ItemElement extends Item
      */
     public String getUnlocalizedName(ItemStack par1ItemStack)
     {
-        int i = MathHelper.clamp_int(par1ItemStack.getItemDamage(), 0, elementNames.length-1);
-        return super.getUnlocalizedName() + "." + elementNames[i];
+        int i = MathHelper.clamp_int(par1ItemStack.getItemDamage(), 0, Element.values().length-1);
+        return super.getUnlocalizedName() + "." + Element.values()[i];
     }
     
     @SuppressWarnings({ "rawtypes", "unchecked" })
@@ -56,7 +55,7 @@ public class ItemElement extends Item
      */
     public void getSubItems(int par1, CreativeTabs par2CreativeTabs, List par3List)
     {
-        for (int j = 0; j < elementNames.length; ++j)
+        for (int j = 0; j < Element.values().length; ++j)
         {
             par3List.add(new ItemStack(par1, 1, j));
         }
@@ -65,11 +64,11 @@ public class ItemElement extends Item
     @SideOnly(Side.CLIENT)
     public void registerIcons(IconRegister par1IconRegister)
     {
-        this.icons = new Icon[elementNames.length];
+        this.icons = new Icon[Element.values().length];
 
         for (int i = 0; i < icons.length; ++i)
         {
-            this.icons[i] = par1IconRegister.registerIcon(Reference.modid + ":element" + elementNames[i]);
+            this.icons[i] = par1IconRegister.registerIcon(Reference.modid + ":element" + Element.values()[i]);
         }
     }
 }

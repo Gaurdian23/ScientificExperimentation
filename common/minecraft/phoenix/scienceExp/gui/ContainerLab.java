@@ -2,9 +2,9 @@ package minecraft.phoenix.scienceExp.gui;
 
 import minecraft.phoenix.scienceExp.blocks.Blocks;
 import minecraft.phoenix.scienceExp.blocks.TileEntityLab;
+import minecraft.phoenix.scienceExp.chemistry.ReactionManager;
 import minecraft.phoenix.scienceExp.lib.Strings;
 import minecraft.phoenix.scienceExp.util.InventoryReact;
-import minecraft.phoenix.scienceExp.util.ReactionManager;
 import minecraft.phoenix.scienceExp.util.SlotReact;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;

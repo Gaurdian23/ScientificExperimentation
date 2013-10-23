@@ -1,6 +1,11 @@
-package minecraft.phoenix.scienceExp.util;
+package minecraft.phoenix.scienceExp.chemistry;
 
+import java.io.ObjectOutputStream;
+import java.io.OutputStream;
+import java.util.HashMap;
+import minecraft.phoenix.scienceExp.items.ItemCompound;
 import minecraft.phoenix.scienceExp.items.Items;
+import minecraft.phoenix.scienceExp.util.InventoryReact;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
@@ -21,9 +26,19 @@ public class ReactionManager
 
 	public ItemStack[] calculateOutput(InventoryReact labMatrix, InventoryReact labResultMatrix, World worldObj)
 	{
+		HashMap<Element, Integer> elements = new HashMap<Element, Integer>();
 		ItemStack[] output = new ItemStack[labResultMatrix.getSizeInventory()];
-		output[0] = new ItemStack(Items.compound, 1, 0);
-		setLore("H₂SO₄", output[0]);
+		ItemStack input = labMatrix.getStackInSlot(0);
+		Compound compound = new Compound(new HashMap<Object, Integer>());
+		compound.components.put(Element.HYDROGEN, 2);
+		compound.components.put(Element.SULPHUR, 1);
+		compound.components.put(Element.OXYGEN, 4);
+		if(input.itemID == Items.compound.itemID)
+			Compound.;
+		else
+			output[0] = new ItemStack(Items.compound);
+		setLore(compound.toString(), output[0]);
+		
 		return output;
 	}
 	
@@ -36,4 +51,9 @@ public class ReactionManager
         tag.setTag("Lore", list);
         itemStack.setTagInfo("display", tag);
     }
+	
+	private static void writeToNBT(Compound compound, NBTTagCompound tag)
+	{
+		
+	}
 }
