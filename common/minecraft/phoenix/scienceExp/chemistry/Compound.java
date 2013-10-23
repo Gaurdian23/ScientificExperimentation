@@ -83,7 +83,7 @@ public class Compound
 	
 	private static void getNumber(String matcherGroup, HashMap<Element, Integer> elements, int multiplier)
 	{
-		if(!matcherGroup.matches("[A-Z|[A-Z][a-z]"))
+		if(!matcherGroup.matches("[A-Z][a-z]|[A-Z]"))
 		{
 			Pattern elementPattern = Pattern.compile("[A-Z][a-z]|[A-Z]|\\d");
 			Matcher elementMatcher = elementPattern.matcher(matcherGroup);
@@ -93,6 +93,6 @@ public class Compound
 			elements.put(element, elements.get(element) == null ? Integer.parseInt(elementMatcher.group()) : elements.get(element) + Integer.parseInt(elementMatcher.group()));
 		}
 		else
-			elements.put(Element.symbols.get(matcherGroup), 1);
+			elements.put(Element.symbols.get(matcherGroup), elements.get(Element.symbols.get(matcherGroup)) == null ? 1 : elements.get(Element.symbols.get(matcherGroup)) + 1);
 	}
 }

@@ -190,4 +190,9 @@ public class InventoryReact implements IInventory
     	else
     		return false;
     }
+    
+    public ItemStack[] getInput()
+    {
+    	return stackList;
+    }
 }
