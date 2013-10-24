@@ -1,32 +1,33 @@
 package minecraft.phoenix.scienceExp.chemistry;
 
-import java.util.HashMap;
-
-public enum Element
+public class Element
 {
-	HYDROGEN ("H", 1), HELIUM ("He", 0),
-	LITHIUM ("Li", 1), BERYLLIUM ("Be", 2), BORON ("B", 3), CARBON ("C", 4), NITROGEN ("N", 5), OXYGEN ("O", 6), FLUORINE ("F", 7), NEON ("Ne", 0),
-	SODIUM ("Na", 1), MAGNESIUM ("Mg", 2), ALUMINIUM ("Al", 3), SILICON ("Si", 4), PHOSPHOROUS ("P", 5), SULPHUR ("S", 6), CHLORINE ("Cl", 7), ARGON ("Ar", 0);
-	
-	
-	private String symbol;
+	private Elements element;
 	private int outerElectrons;
-	public static HashMap<String, Element> symbols;
-	static
-	{
-		symbols = new HashMap<String, Element>();
-		for(Element e : Element.values())
-		{
-			symbols.put(e.symbol, e);
-		}
-	}
+	private int charge;
 	
-	private Element(String symbol, int outerElectrons)
+	public Element(Elements element)
 	{
-		this.outerElectrons = outerElectrons;
-		this.symbol = symbol;
+		this.element = element;
+		this.outerElectrons = element.getOuterElectrons();
 	}
-	
+
+	/**
+	 * @return the element
+	 */
+	public Elements getElement()
+	{
+		return element;
+	}
+
+	/**
+	 * @param element the element to set
+	 */
+	public void setElement(Elements element)
+	{
+		this.element = element;
+	}
+
 	/**
 	 * @return the outerElectrons
 	 */
@@ -36,10 +37,21 @@ public enum Element
 	}
 
 	/**
-	 * @return the symbol
+	 * @param outerElectrons the outerelectrons to set
 	 */
-	public String getSymbol()
+	public void setOuterElectrons(int outerElectrons)
 	{
-		return symbol;
+		this.outerElectrons = outerElectrons;
+		this.charge = this.element.getOuterElectrons()-outerElectrons;
 	}
+	
+
+	/**
+	 * @return the charge
+	 */
+	public int getCharge()
+	{
+		return charge;
+	}
+
 }

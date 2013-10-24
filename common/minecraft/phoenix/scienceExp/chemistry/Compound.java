@@ -1,5 +1,6 @@
 package minecraft.phoenix.scienceExp.chemistry;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
@@ -41,8 +42,8 @@ public class Compound
 		    while (it.hasNext())
 		    {
 		        Map.Entry<Object, Integer> pairs = it.next();
-		        if(pairs.getKey() instanceof Element)
-		        	compound += ((Element) pairs.getKey()).getSymbol() + subscript.get(pairs.getValue());
+		        if(pairs.getKey() instanceof Elements)
+		        	compound += ((Elements) pairs.getKey()).getSymbol() + subscript.get(pairs.getValue());
 		        else if(pairs.getKey() instanceof Compound)
 		        	compound += "(" + ((Compound) pairs.getKey()).toString() + ")" + subscript.get(pairs.getValue());
 		        it.remove();
@@ -51,7 +52,7 @@ public class Compound
 		return compound;
 	}
 	
-	public static void fromString(String compound, HashMap<Element, Integer> elements)
+	public static void fromString(String compound, ArrayList<Elements> elements)
 	{
 		compound.replace("₂", "2");
 		compound.replace("₃", "3");
@@ -67,32 +68,31 @@ public class Compound
 		{
 			if(!matcher.group().startsWith("("))
 			{
-				getNumber(matcher.group(), elements, 1);
+				getNumber(matcher.group(), elements);
 			}
 			else
 			{
-				int multiplier = Integer.parseInt(matcher.group().substring(matcher.group().length()-2, matcher.group().length()-1));
 				Pattern splitBracketsP = Pattern.compile("[A-Z]\\d|[A-Z][a-z]\\d|[A-Z][a-z]|[A-Z]");
 				Matcher splitBracketsM = splitBracketsP.matcher(matcher.group());
 				while(splitBracketsM.find())
-					getNumber(splitBracketsM.group() , elements, multiplier);
+					getNumber(splitBracketsM.group(), elements);
 			}
 		}
 		
 	}
 	
-	private static void getNumber(String matcherGroup, HashMap<Element, Integer> elements, int multiplier)
+	private static void getNumber(String matcherGroup, ArrayList<Elements> elements2)
 	{
 		if(!matcherGroup.matches("[A-Z][a-z]|[A-Z]"))
 		{
 			Pattern elementPattern = Pattern.compile("[A-Z][a-z]|[A-Z]|\\d");
 			Matcher elementMatcher = elementPattern.matcher(matcherGroup);
 			elementMatcher.find();
-			Element element = Element.symbols.get(elementMatcher.group());
+			Elements elements = Elements.symbols.get(elementMatcher.group());
 			elementMatcher.find();
-			elements.put(element, elements.get(element) == null ? Integer.parseInt(elementMatcher.group()) : elements.get(element) + Integer.parseInt(elementMatcher.group()));
+			elements2.add(elements);
 		}
 		else
-			elements.put(Element.symbols.get(matcherGroup), elements.get(Element.symbols.get(matcherGroup)) == null ? 1 : elements.get(Element.symbols.get(matcherGroup)) + 1);
+			elements2.add(Elements.symbols.get(matcherGroup));
 	}
 }
