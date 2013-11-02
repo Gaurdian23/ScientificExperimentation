@@ -6,7 +6,10 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Map.Entry;
+import java.util.TreeMap;
 import minecraft.phoenix.scienceExp.items.Items;
 import minecraft.phoenix.scienceExp.util.InventoryReact;
 import net.minecraft.item.ItemStack;
@@ -26,14 +29,15 @@ public class ReactionManager
 	{
 		ItemStack[] input = labMatrix.getInput();
 		ItemStack[] output = new ItemStack[labResultMatrix.getSizeInventory()];
-		ArrayList<Elements> elements = new ArrayList<Elements>();
+		HashMap<Element, Integer> elements = new HashMap<Element, Integer>();
 		for (ItemStack stack : input)
 		{
 			if (stack != null)
 			{
 				if (stack.itemID == Items.element.itemID)
 				{
-					elements.add(Elements.values()[stack.getItemDamage()]);
+					//TODO diatomic elements
+					addToElements(elements, new Element(Elements.values()[stack.getItemDamage()]), stack.stackSize);
 				}
 				else
 					Compound.fromString(stack.getDisplayName(), elements);
@@ -60,30 +64,34 @@ public class ReactionManager
 		return output;
 	}
 	
-	private HashMap<Object, Integer> calculateCompounds(ArrayList<Elements> elements)
+	private void addToElements(HashMap<Element, Integer> elements, Element elements2, int stackSize)
 	{
-		ArrayList<Element> input = new ArrayList<Element>(5);
-		if (!elements.isEmpty())
-		{
-			for(Elements e : elements)
-				input.add(new Element(e));
-		};
-		Collections.sort(input, new Comparator<Element>()
+		elements.put(elements2, elements.containsKey(elements2) ? elements.get(elements2)+stackSize : stackSize); 
+	}
+
+	private HashMap<Object, Integer> calculateCompounds(HashMap<Element, Integer> elements)
+	{
+		TreeMap<Element, Integer> input = new TreeMap<Element, Integer>(new Comparator<Element>()
 		{
 			public int compare(Element a, Element b)
 			{
 				return ((Integer)a.getElement().getReactivity()).compareTo(b.getElement().getReactivity());
 			}
 		});
+		Iterator<Entry<Element, Integer>> it = elements.entrySet().iterator();
+	    while (it.hasNext()) {
+	        Entry<Element, Integer> pairs = (Entry<Element, Integer>)it.next();
+	        input.put(pairs.getKey(), pairs.getValue());
+	        it.remove();
+	    }
 		return react(input);
 	}
 
-	private HashMap<Object, Integer> react(ArrayList<Element> input)
+	private HashMap<Object, Integer> react(TreeMap<Element, Integer> input)
 	{
 		HashMap<Object, Integer> output = new HashMap<Object, Integer>();
-		for(int i = 0; i < input.size(); i++)
+		for(Element element : input)
 		{
-			Element element = input.get(i);
 			if(element.getElement().isMetal())
 			{
 				Element nonMetal = null;

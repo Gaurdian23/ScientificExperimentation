@@ -1,6 +1,5 @@
 package minecraft.phoenix.scienceExp.chemistry;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
@@ -42,8 +41,8 @@ public class Compound
 		    while (it.hasNext())
 		    {
 		        Map.Entry<Object, Integer> pairs = it.next();
-		        if(pairs.getKey() instanceof Elements)
-		        	compound += ((Elements) pairs.getKey()).getSymbol() + subscript.get(pairs.getValue());
+		        if(pairs.getKey() instanceof Element)
+		        	compound += ((Element) pairs.getKey()).getElement().getSymbol() + subscript.get(pairs.getValue());
 		        else if(pairs.getKey() instanceof Compound)
 		        	compound += "(" + ((Compound) pairs.getKey()).toString() + ")" + subscript.get(pairs.getValue());
 		        it.remove();
@@ -52,7 +51,7 @@ public class Compound
 		return compound;
 	}
 	
-	public static void fromString(String compound, ArrayList<Elements> elements)
+	public static void fromString(String compound, HashMap<Element, Integer> elements)
 	{
 		compound.replace("₂", "2");
 		compound.replace("₃", "3");
@@ -62,37 +61,38 @@ public class Compound
 		compound.replace("₇", "7");
 		compound.replace("₈", "8");
 		compound.replace("₉", "9");
-		Pattern pattern = Pattern.compile("\\(\\w+\\)\\d|[A-Z]\\d|[A-Z][a-z]\\d|[A-Z][a-z]|[A-Z]");
+		Pattern pattern = Pattern.compile("\\(\\w+\\)\\d|[AZ]\\d|[AZ][az]\\d|[AZ][az]|[AZ]");
 		Matcher matcher = pattern.matcher(compound);
 		while(matcher.find())
 		{
 			if(!matcher.group().startsWith("("))
 			{
-				getNumber(matcher.group(), elements);
+				getNumber(matcher.group(), elements, 1);
 			}
 			else
 			{
-				Pattern splitBracketsP = Pattern.compile("[A-Z]\\d|[A-Z][a-z]\\d|[A-Z][a-z]|[A-Z]");
+				int multiplier = Integer.parseInt(matcher.group().substring(matcher.group().length()-2, matcher.group().length()-1));
+				Pattern splitBracketsP = Pattern.compile("[AZ]\\d|[AZ][az]\\d|[AZ][az]|[AZ]");
 				Matcher splitBracketsM = splitBracketsP.matcher(matcher.group());
 				while(splitBracketsM.find())
-					getNumber(splitBracketsM.group(), elements);
+					getNumber(splitBracketsM.group() , elements, multiplier);
 			}
 		}
 		
 	}
 	
-	private static void getNumber(String matcherGroup, ArrayList<Elements> elements2)
+	private static void getNumber(String matcherGroup, HashMap<Element, Integer> elements, int multiplier)
 	{
-		if(!matcherGroup.matches("[A-Z][a-z]|[A-Z]"))
+		if(!matcherGroup.matches("[AZ][az]|[AZ]"))
 		{
-			Pattern elementPattern = Pattern.compile("[A-Z][a-z]|[A-Z]|\\d");
+			Pattern elementPattern = Pattern.compile("[AZ][az]|[AZ]|\\d");
 			Matcher elementMatcher = elementPattern.matcher(matcherGroup);
 			elementMatcher.find();
-			Elements elements = Elements.symbols.get(elementMatcher.group());
+			Element element = new Element(Elements.symbols.get(elementMatcher.group()));
 			elementMatcher.find();
-			elements2.add(elements);
+			elements.put(element, elements.get(element) == null ? Integer.parseInt(elementMatcher.group()) : elements.get(element) + Integer.parseInt(elementMatcher.group()));
 		}
 		else
-			elements2.add(Elements.symbols.get(matcherGroup));
+			elements.put(new Element(Elements.symbols.get(matcherGroup)), elements.get(Elements.symbols.get(matcherGroup)) == null ? 1 : elements.get(Elements.symbols.get(matcherGroup)) + 1);
 	}
 }
